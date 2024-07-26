@@ -1,24 +1,21 @@
-console.log("Script loaded");
-
 function analyzeArray(arr) {
-    console.log("analyzeArray function called with array:", arr);
+    // Check if the array is empty
+    if (arr.length === 0) {
+        return "Array is empty.";
+    }
 
     // Find the maximum number in the array
     const max = Math.max(...arr);
-    console.log("Maximum:", max);
 
     // Find the minimum number in the array
     const min = Math.min(...arr);
-    console.log("Minimum:", min);
 
     // Calculate the average of the numbers in the array
     const sum = arr.reduce((acc, num) => acc + num, 0);
     const avg = sum / arr.length;
-    console.log("Average:", avg);
 
     // Identify even numbers
     const evenNumbers = arr.filter(num => num % 2 === 0);
-    console.log("Even Numbers:", evenNumbers);
 
     return {
         max: max,
@@ -28,7 +25,27 @@ function analyzeArray(arr) {
     };
 }
 
-// Example usage:
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const result = analyzeArray(array);
-console.log("Result:", result);
+function processArray() {
+    // Get the user input
+    const input = document.getElementById('numbers').value;
+
+    // Convert the input string into an array of numbers
+    const array = input.split(',').map(num => parseFloat(num.trim()));
+
+    // Check for invalid input
+    if (array.some(isNaN)) {
+        document.getElementById('results').innerHTML = 'Please enter valid numbers.';
+        return;
+    }
+
+    // Call the analyzeArray function and get the results
+    const result = analyzeArray(array);
+
+    // Display the results
+    document.getElementById('results').innerHTML = `
+        <strong>Maximum:</strong> ${result.max} <br>
+        <strong>Minimum:</strong> ${result.min} <br>
+        <strong>Average:</strong> ${result.avg.toFixed(2)} <br>
+        <strong>Even Numbers:</strong> ${result.evenNumbers.join(', ')}
+    `;
+}

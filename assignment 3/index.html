@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 3 - Array Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Array Analyzer</h1>
+    <label for="numbers">Enter numbers (comma-separated):</label><br>
+    <input type="text" id="numbers" placeholder="1, 2, 3, 4, 5, 6, 7, 8, 9, 10"><br>
+    <button onclick="processArray()">Analyze</button>
+    <p id="results"></p>
     <script src="script.js"></script>
 </body>
 </html>
